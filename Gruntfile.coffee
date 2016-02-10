@@ -113,14 +113,11 @@ module.exports = (grunt) ->
         task: ['coffeelint']
 
       sass:
-        files: '**/*.{scss,sass}'
+        files: 'src/**/*.{scss,sass}'
         tasks: ['sass']
 
       coffee:
-        files: [
-          '**/*.coffee'
-          '!Gruntfile.coffee'
-        ]
+        files: 'src/**/*.coffee'
         tasks: ['coffee']
 
       js:

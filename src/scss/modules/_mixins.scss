@@ -1,11 +1,11 @@
-@mixin type($type) {
-  #{$prefix-type + $type + " " + $prefix} {
+@mixin primary($type) {
+  #{".et_primary_nav_dropdown_animation_" + $type} {
     @content;
   }
 }
 
-@mixin style($style) {
-  #{$prefix-style + $style + " " + $prefix} {
+@mixin secondary($type) {
+  #{".et_secondary_nav_dropdown_animation_" + $type} {
     @content;
   }
 }
