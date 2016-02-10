@@ -2,7 +2,7 @@
 @import "mixins";
 @import "colors";
 
-$animations: "fadeIn", "fadeInTop", "fadeInBottom", "fadeInLeft", "scaleInRight", "scaleInLeft", "scaleIn", "flipInX", "flipInY", "slideInY", "slideInX";
+$animations: "fadeIn", "fadeInTop", "fadeInRight", "fadeInBottom", "fadeInLeft", "scaleInRight", "scaleInLeft", "scaleIn", "flipInX", "flipInY", "slideInY", "slideInX";
 
 $total: length($animations);
 

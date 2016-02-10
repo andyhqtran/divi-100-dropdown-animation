@@ -2,3 +2,14 @@
 
 @import "partials/primary";
 @import "partials/secondary";
+
+.et_divi_100_custom_dropdown_animations--primary,
+.et_divi_100_custom_dropdown_animations--secondary {
+  .nav {
+    li {
+      ul {
+        transition: 0.3s ease;
+      }
+    }
+  }
+}

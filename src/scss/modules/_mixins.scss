@@ -1,8 +1,13 @@
 @mixin primary($type) {
   @if index($animations, $type) {
-    .et_divi_100_custom_dropdown_animations {
+    .et_divi_100_custom_dropdown_animations--primary {
       &#{".et_primary_nav_dropdown_animation_" + $type} {
-        @content;
+
+        .nav {
+          li {
+            @content;
+          }
+        }
       }
     }
   }
@@ -14,7 +19,7 @@
 
 @mixin secondary($type) {
   @if index($animations, $type) {
-    .et_divi_100_custom_dropdown_animations {
+    .et_divi_100_custom_dropdown_animations--secondary {
       &#{".et_secondary_nav_dropdown_animation_" + $type} {
         @content;
       }

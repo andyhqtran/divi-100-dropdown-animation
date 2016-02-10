@@ -235,12 +235,16 @@ class ET_Divi_100_Custom_Dropdown_Animations {
 	function get_primary_styles() {
 		return apply_filters( $this->plugin_prefix . 'primary_styles', array(
 			''    => __( 'Default' ),
-			'1'   => __( 'One' ),
-			'2'   => __( 'Two' ),
-			'3'   => __( 'Three' ),
-			'4'   => __( 'Four' ),
-			'5'   => __( 'Five' ),
-			'6'   => __( 'Six' ),
+			'fadeIn'   => __( 'Fade In' ),
+			'fadeInTop'   => __( 'Fade In From Top' ),
+			'fadeInRight'   => __( 'Fade In From Right' ),
+			'fadeInBottom'   => __( 'Fade In From Bottom' ),
+			'fadeInLeft'   => __( 'Fade In From Left' ),
+			'scaleIn'   => __( 'Scale In' ),
+			'scaleInRight'   => __( 'Scale In From Right' ),
+			'scaleInLeft'   => __( 'Scale In From Left' ),
+			'flipInY' => _("Flip In Vertical"),
+			'flipInX' => _("Flip In Horizontal"),
 		) );
 	}
 
@@ -290,12 +294,12 @@ class ET_Divi_100_Custom_Dropdown_Animations {
 		$selected_secondary_style = $this->get_selected_secondary_style();
 
 		if ( '' !== $selected_primary_style ) {
-			$classes[] = esc_attr(  $this->plugin_prefix . '--primary' );
+			$classes[] = esc_attr(  $this->plugin_prefix . '-primary' );
 			$classes[] = esc_attr( "et_primary_nav_dropdown_animation_{$selected_primary_style}" );
 		}
 
 		if ( '' !== $selected_secondary_style ) {
-			$classes[] = esc_attr(  $this->plugin_prefix . '--secondary' );
+			$classes[] = esc_attr(  $this->plugin_prefix . '-secondary' );
 			$classes[] = esc_attr( "et_secondary_nav_dropdown_animation_{$selected_secondary_style}" );
 		}
 

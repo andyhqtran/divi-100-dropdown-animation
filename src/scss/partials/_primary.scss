@@ -1,1 +1,134 @@
-@include primary("fadeInTop") {}
+@include primary("fadeIn") {
+  // .nav {
+  //   li {
+  //     ul {
+  //       transition: 0.2s ease;
+  //     }
+  //   }
+  // }
+}
+
+
+@include primary("fadeInTop") {
+  ul {
+    transform: translateY(-10px);
+
+    ul {
+      transform: translateY(-10px);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
+
+
+@include primary("fadeInRight") {
+  ul {
+    transform: translateX(10px);
+
+    ul {
+      transform: translateX(10px);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
+
+
+@include primary("fadeInBottom") {
+  ul {
+    transform: translateY(10px);
+
+    ul {
+      transform: translateY(10px);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
+
+
+@include primary("fadeInLeft") {
+  ul {
+    transform: translateX(-10px);
+
+    ul {
+      transform: translateX(-10px);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
+
+
+@include primary("scaleIn") {
+  ul {
+    transform-origin: top center;
+    transform: scale(0, 0);
+
+    ul {
+      transform-origin: top center;
+      transform: scale(0, 0);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
+
+
+@include primary("scaleInRight") {
+  ul {
+    transform-origin: top right;
+    transform: scale(0, 0);
+
+    ul {
+      transform-origin: top right;
+      transform: scale(0, 0);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
+
+
+@include primary("scaleInLeft") {
+  ul {
+    transform-origin: top left;
+    transform: scale(0, 0);
+
+    ul {
+      transform-origin: top left;
+      transform: scale(0, 0);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
