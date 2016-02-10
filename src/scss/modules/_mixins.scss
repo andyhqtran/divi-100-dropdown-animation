@@ -1,11 +1,27 @@
 @mixin primary($type) {
-  #{".et_primary_nav_dropdown_animation_" + $type} {
-    @content;
+  @if index($animations, $type) {
+    .et_divi_100_custom_dropdown_animations {
+      &#{".et_primary_nav_dropdown_animation_" + $type} {
+        @content;
+      }
+    }
+  }
+
+  @else {
+    @error "This animation doesn't exists. Animations: " + $animations;
   }
 }
 
 @mixin secondary($type) {
-  #{".et_secondary_nav_dropdown_animation_" + $type} {
-    @content;
+  @if index($animations, $type) {
+    .et_divi_100_custom_dropdown_animations {
+      &#{".et_secondary_nav_dropdown_animation_" + $type} {
+        @content;
+      }
+    }
+  }
+
+  @else {
+    @error "This animation doesn't exists. Animations: " + $animations;
   }
 }
