@@ -100,20 +100,24 @@ class ET_Divi_100_Custom_Dropdown_Animations {
 		$is_option_updated         = false;
 		$is_option_updated_success = false;
 		$is_option_updated_message = '';
-		$search_field_name         = 'search-field-style';
+		$primary_style_name        = 'primary-style';
+		$secondary_style_name      = 'secondary-style';
 		$nonce_action              = $this->plugin_prefix . 'options';
 		$nonce                     = $this->plugin_prefix . 'options_nonce';
 
 		// Verify whether an update has been occured
-		if ( isset( $_POST[ $search_field_name ] ) && isset( $_POST[ $nonce ] ) ) {
+		if ( isset( $_POST[ $primary_style_name ] ) && isset( $_POST[ $secondary_style_name ] ) && isset( $_POST[ $nonce ] ) ) {
 			$is_option_updated = true;
 
 			// Verify nonce. Thou shalt use correct nonce
 			if ( wp_verify_nonce( $_POST[ $nonce ], $nonce_action ) ) {
+
 				// Verify input
-				if ( in_array( $_POST[$search_field_name], array_keys( $this->get_styles() ) ) ) {
+				if ( in_array( $_POST[ $primary_style_name ], array_keys( $this->get_primary_styles() ) ) && in_array( $_POST[ $secondary_style_name ], array_keys( $this->get_secondary_styles() ) ) ) {
 					// Update option
-					update_option( $this->plugin_prefix . 'styles', sanitize_text_field( $_POST[ $search_field_name ] ) );
+					update_option( $this->plugin_prefix . 'primary_styles', sanitize_text_field( $_POST[ $primary_style_name ] ) );
+
+					update_option( $this->plugin_prefix . 'secondary_styles', sanitize_text_field( $_POST[ $secondary_style_name ] ) );
 
 					// Update submission status & message
 					$is_option_updated_message = __( 'Your setting has been updated.' );
@@ -148,30 +152,61 @@ class ET_Divi_100_Custom_Dropdown_Animations {
 					<tbody>
 						<tr>
 							<th scope="row">
-								<label for="search-field-style"><?php _e( 'Select Style' ); ?></label>
+								<label for="primary-style"><?php _e( 'Primary Nav Style' ); ?></label>
 							</th>
 							<td>
-								<select name="search-field-style" id="search-field-style" data-preview-prefix="style-">
+								<select name="primary-style" id="primary-style" data-preview-prefix="primary-style-">
 									<?php
 									// Get saved style
-									$style = $this->get_selected_style();
+									$primary_style = $this->get_selected_primary_style();
 
 									// Render options
-									foreach ( $this->get_styles() as $style_id => $style_label ) {
+									foreach ( $this->get_primary_styles() as $primary_style_id => $primary_style_label ) {
 										printf(
 											'<option value="%1$s" %3$s>%2$s</option>',
-											esc_attr( $style_id ),
-											esc_html( $style_label ),
-											"{$style}" === "{$style_id}" ? 'selected="selected"' : ''
+											esc_attr( $primary_style_id ),
+											esc_html( $primary_style_label ),
+											"{$primary_style}" === "{$primary_style_id}" ? 'selected="selected"' : ''
 										);
 									}
 									?>
 								</select>
 								<p class="description"><?php _e( 'Proper description goes here' ); ?></p>
 
-								<div class="option-preview" style="margin-top: 20px; <?php echo ( '' !== $style ) ? 'min-height: 182px; ' : ''; ?>">
-									<?php if ( '' !== $style ) { ?>
-										<img src="<?php echo plugin_dir_url( __FILE__ ) . 'preview/style-' . $style . '.gif'; ?>">
+								<div class="option-preview" style="margin-top: 20px; <?php echo ( '' !== $primary_style ) ? 'min-height: 182px; ' : ''; ?>">
+									<?php if ( '' !== $primary_style ) { ?>
+										<img src="<?php echo plugin_dir_url( __FILE__ ) . 'preview/style-' . $primary_style . '.gif'; ?>">
+									<?php } ?>
+								</div>
+							</td>
+						</tr>
+
+						<tr>
+							<th scope="row">
+								<label for="secondary-style"><?php _e( 'Secondary Nav Style' ); ?></label>
+							</th>
+							<td>
+								<select name="secondary-style" id="secondary-style" data-preview-prefix="secondary-style-">
+									<?php
+									// Get saved style
+									$secondary_style = $this->get_selected_secondary_style();
+
+									// Render options
+									foreach ( $this->get_secondary_styles() as $secondary_style_id => $secondary_style_label ) {
+										printf(
+											'<option value="%1$s" %3$s>%2$s</option>',
+											esc_attr( $secondary_style_id ),
+											esc_html( $secondary_style_label ),
+											"{$secondary_style}" === "{$secondary_style_id}" ? 'selected="selected"' : ''
+										);
+									}
+									?>
+								</select>
+								<p class="description"><?php _e( 'Proper description goes here' ); ?></p>
+
+								<div class="option-preview" style="margin-top: 20px; <?php echo ( '' !== $secondary_style ) ? 'min-height: 182px; ' : ''; ?>">
+									<?php if ( '' !== $secondary_style ) { ?>
+										<img src="<?php echo plugin_dir_url( __FILE__ ) . 'preview/style-' . $secondary_style . '.gif'; ?>">
 									<?php } ?>
 								</div>
 							</td>
@@ -194,11 +229,11 @@ class ET_Divi_100_Custom_Dropdown_Animations {
 	}
 
 	/**
-	* List of valid styles
-	* @return void
+	* List of valid primary nav styles
+	* @return array
 	*/
-	function get_styles() {
-		return apply_filters( $this->plugin_prefix . 'styles', array(
+	function get_primary_styles() {
+		return apply_filters( $this->plugin_prefix . 'primary_styles', array(
 			''    => __( 'Default' ),
 			'1'   => __( 'One' ),
 			'2'   => __( 'Two' ),
@@ -210,13 +245,39 @@ class ET_Divi_100_Custom_Dropdown_Animations {
 	}
 
 	/**
-	* Get selected style
+	* List of valid secondary nav styles
+	* @return array
+	*/
+	function get_secondary_styles() {
+		return apply_filters( $this->plugin_prefix . 'secondary_styles', array(
+			''    => __( 'Default' ),
+			'1'   => __( 'One' ),
+			'2'   => __( 'Two' ),
+			'3'   => __( 'Three' ),
+			'4'   => __( 'Four' ),
+			'5'   => __( 'Five' ),
+			'6'   => __( 'Six' ),
+		) );
+	}
+
+	/**
+	* Get selected primary style
 	* @return string
 	*/
-	function get_selected_style() {
-		$style = get_option( $this->plugin_prefix . 'styles', '' );
+	function get_selected_primary_style() {
+		$style = get_option( $this->plugin_prefix . 'primary_styles', '' );
 
-		return apply_filters( $this->plugin_prefix . 'get_selected_style', $style );
+		return apply_filters( $this->plugin_prefix . 'get_selected_primary_style', $style );
+	}
+
+	/**
+	* Get selected secondary style
+	* @return string
+	*/
+	function get_selected_secondary_style() {
+		$style = get_option( $this->plugin_prefix . 'secondary_styles', '' );
+
+		return apply_filters( $this->plugin_prefix . 'get_selected_secondary_style', $style );
 	}
 
 	/**
@@ -225,11 +286,17 @@ class ET_Divi_100_Custom_Dropdown_Animations {
 	*/
 	function body_class( $classes ) {
 		// Get selected style
-		$selected_style = $this->get_selected_style();
+		$selected_primary_style = $this->get_selected_primary_style();
+		$selected_secondary_style = $this->get_selected_secondary_style();
 
-		// Assign specific class to <body> if needed
-		if ( '' !== $selected_style ) {
-			$classes[] = esc_attr(  $this->plugin_prefix . '-style-' . $selected_style );
+		if ( '' !== $selected_primary_style ) {
+			$classes[] = esc_attr(  $this->plugin_prefix . '--primary' );
+			$classes[] = esc_attr( "et_primary_nav_dropdown_animation_{$selected_primary_style}" );
+		}
+
+		if ( '' !== $selected_secondary_style ) {
+			$classes[] = esc_attr(  $this->plugin_prefix . '--secondary' );
+			$classes[] = esc_attr( "et_secondary_nav_dropdown_animation_{$selected_secondary_style}" );
 		}
 
 		return $classes;
