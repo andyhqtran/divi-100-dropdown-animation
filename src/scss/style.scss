@@ -9,6 +9,14 @@
       ul {
         transition: 0.3s ease;
       }
+
+      &.mega-menu {
+        > ul {
+          ul {
+            transform: none;
+          }
+        }
+      }
     }
   }
 }
