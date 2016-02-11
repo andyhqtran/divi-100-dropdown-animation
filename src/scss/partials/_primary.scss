@@ -128,7 +128,48 @@
 
   &:hover {
     > ul {
+      transform-origin: top right;
       transform: none;
     }
+  }
+}
+
+
+@include primary("flipInX") {
+  > ul {
+    transform: rotate3d(0, 1, 0, 90deg);
+    transform-origin: top center;
+    backface-visibility: hidden;
+    opacity: 1;
+  }
+
+  &:hover {
+    > ul {
+      transform: rotate3d(1, 0, 0, 0deg);
+    }
+  }
+
+  > ul {
+    transform: rotate3d(1, 0, 0, 90deg) perspective(800px);
+  }
+}
+
+
+@include primary("flipInY") {
+  > ul {
+    transform: rotate3d(0, 1, 0, 90deg);
+    transform-origin: top center;
+    backface-visibility: hidden;
+    opacity: 1;
+  }
+
+  &:hover {
+    > ul {
+      transform: rotate3d(0, 1, 0, 0deg);
+    }
+  }
+
+  > ul {
+    transform: rotate3d(0, 1, 0, 90deg) perspective(800px);
   }
 }
