@@ -1,0 +1,175 @@
+@include secondary("fadeIn") {
+  // .nav {
+  //   li {
+  //     ul {
+  //       transition: 0.2s ease;
+  //     }
+  //   }
+  // }
+}
+
+
+@include secondary("fadeInTop") {
+  ul {
+    transform: translateY(-10px);
+
+    ul {
+      transform: translateY(-10px);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
+
+
+@include secondary("fadeInRight") {
+  ul {
+    transform: translateX(10px);
+
+    ul {
+      transform: translateX(10px);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
+
+
+@include secondary("fadeInBottom") {
+  ul {
+    transform: translateY(10px);
+
+    ul {
+      transform: translateY(10px);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
+
+
+@include secondary("fadeInLeft") {
+  ul {
+    transform: translateX(-10px);
+
+    ul {
+      transform: translateX(-10px);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
+
+
+@include secondary("scaleIn") {
+  ul {
+    transform-origin: top center;
+    transform: scale(0, 0);
+
+    ul {
+      transform-origin: top center;
+      transform: scale(0, 0);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
+
+
+@include secondary("scaleInRight") {
+  ul {
+    transform-origin: top right;
+    transform: scale(0, 0);
+
+    ul {
+      transform-origin: top right;
+      transform: scale(0, 0);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform: none;
+    }
+  }
+}
+
+
+@include secondary("scaleInLeft") {
+  ul {
+    transform-origin: top left;
+    transform: scale(0, 0);
+
+    ul {
+      transform-origin: top left;
+      transform: scale(0, 0);
+    }
+  }
+
+  &:hover {
+    > ul {
+      transform-origin: top right;
+      transform: none;
+    }
+  }
+}
+
+
+@include secondary("flipInX") {
+  > ul {
+    transform: rotate3d(0, 1, 0, 90deg);
+    transform-origin: top center;
+    backface-visibility: hidden;
+    opacity: 1;
+  }
+
+  &:hover {
+    > ul {
+      transform: rotate3d(1, 0, 0, 0deg);
+    }
+  }
+
+  > ul {
+    transform: rotate3d(1, 0, 0, 90deg) perspective(800px);
+  }
+}
+
+
+@include secondary("flipInY") {
+  > ul {
+    transform: rotate3d(0, 1, 0, 90deg);
+    transform-origin: top center;
+    backface-visibility: hidden;
+    opacity: 1;
+  }
+
+  &:hover {
+    > ul {
+      transform: rotate3d(0, 1, 0, 0deg);
+    }
+  }
+
+  > ul {
+    transform: rotate3d(0, 1, 0, 90deg) perspective(800px);
+  }
+}

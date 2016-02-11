@@ -21,7 +21,14 @@
   @if index($animations, $type) {
     .et_divi_100_custom_dropdown_animations--secondary {
       &#{".et_secondary_nav_dropdown_animation_" + $type} {
-        @content;
+
+        #et-secondary-menu {
+          #et-secondary-nav.menu {
+            li {
+              @content;
+            }
+          }
+        }
       }
     }
   }
