@@ -155,7 +155,7 @@ class ET_Divi_100_Custom_Dropdown_Animations {
 								<label for="primary-style"><?php _e( 'Primary Nav Style' ); ?></label>
 							</th>
 							<td>
-								<select name="primary-style" id="primary-style" data-preview-prefix="primary-style-">
+								<select name="primary-style" id="primary-style" data-preview-prefix="style-">
 									<?php
 									// Get saved style
 									$primary_style = $this->get_selected_primary_style();
@@ -173,7 +173,7 @@ class ET_Divi_100_Custom_Dropdown_Animations {
 								</select>
 								<p class="description"><?php _e( 'Proper description goes here' ); ?></p>
 
-								<div class="option-preview" style="margin-top: 20px; <?php echo ( '' !== $primary_style ) ? 'min-height: 182px; ' : ''; ?>">
+								<div class="option-preview" style="margin-top: 20px; <?php echo ( '' !== $primary_style ) ? 'min-height: 305px; ' : ''; ?>">
 									<?php if ( '' !== $primary_style ) { ?>
 										<img src="<?php echo plugin_dir_url( __FILE__ ) . 'preview/style-' . $primary_style . '.gif'; ?>">
 									<?php } ?>
@@ -186,7 +186,7 @@ class ET_Divi_100_Custom_Dropdown_Animations {
 								<label for="secondary-style"><?php _e( 'Secondary Nav Style' ); ?></label>
 							</th>
 							<td>
-								<select name="secondary-style" id="secondary-style" data-preview-prefix="secondary-style-">
+								<select name="secondary-style" id="secondary-style" data-preview-prefix="style-">
 									<?php
 									// Get saved style
 									$secondary_style = $this->get_selected_secondary_style();
@@ -204,7 +204,7 @@ class ET_Divi_100_Custom_Dropdown_Animations {
 								</select>
 								<p class="description"><?php _e( 'Proper description goes here' ); ?></p>
 
-								<div class="option-preview" style="margin-top: 20px; <?php echo ( '' !== $secondary_style ) ? 'min-height: 182px; ' : ''; ?>">
+								<div class="option-preview" style="margin-top: 20px; <?php echo ( '' !== $secondary_style ) ? 'min-height: 305px; ' : ''; ?>">
 									<?php if ( '' !== $secondary_style ) { ?>
 										<img src="<?php echo plugin_dir_url( __FILE__ ) . 'preview/style-' . $secondary_style . '.gif'; ?>">
 									<?php } ?>
