@@ -6,7 +6,7 @@
 */
 
 /*
-* Plugin Name: Custom Dropdown Animations
+* Plugin Name: Divi 100 Dropdown Animation
 * Plugin URI: https://elegantthemes.com/
 * Description: This plugin gives you the option to choose between different dropdown animations.
 * Author: Elegant Themes
