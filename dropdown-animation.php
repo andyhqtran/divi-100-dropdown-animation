@@ -222,6 +222,10 @@ class ET_Divi_100_Custom_Dropdown_Animation {
 		$selected_primary_style   = $this->utils->get_value( 'primary-style' );
 		$selected_secondary_style = $this->utils->get_value( 'secondary-style' );
 
+		if ( '' !== $selected_primary_style && '' !== $selected_secondary_style ) {
+			$classes[] = esc_attr(  $this->config['plugin_id'] );
+		}
+
 		if ( '' !== $selected_primary_style ) {
 			$classes[] = esc_attr(  $this->config['plugin_prefix'] . '-primary' );
 			$classes[] = esc_attr( "et_primary_nav_dropdown_animation_{$selected_primary_style}" );
