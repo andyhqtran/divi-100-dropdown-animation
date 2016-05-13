@@ -138,7 +138,7 @@ class ET_Divi_100_Custom_Dropdown_Animation {
 		if ( is_admin() ) {
 			$settings_args = array(
 				'plugin_id'       => $this->config['plugin_id'],
-				'preview_dir_url' => plugin_dir_url( __FILE__ ) . 'preview/',
+				'preview_dir_url' => plugin_dir_url( __FILE__ ) . 'assets/preview/',
 				'title'           => $this->config['plugin_name'],
 				'description'     => $this->config['plugin_description'],
 				'fields' => array(
