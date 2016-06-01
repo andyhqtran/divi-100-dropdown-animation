@@ -52,11 +52,11 @@ class ET_Divi_100_Custom_Dropdown_Animation_Config {
 		return array(
 			'main_prefix'        => $main_prefix,
 			'plugin_name'        => __( 'Custom Dropdown Animation' ),
-			'plugin_description' => __( 'Nullam quis risus eget urna mollis ornare vel eu leo.' ),
+			'plugin_description' => __( 'This plugin gives you the option to choose between different dropdown animations.' ),
 			'plugin_slug'        => $plugin_slug,
 			'plugin_id'          => "{$main_prefix}{$plugin_slug}",
 			'plugin_prefix'      => "{$main_prefix}{$plugin_slug}-",
-			'plugin_version'     => 20160526,
+			'plugin_version'     => 20160601,
 			'plugin_dir_path'    => plugin_dir_path( __FILE__ ),
 		);
 	}
@@ -148,7 +148,7 @@ class ET_Divi_100_Custom_Dropdown_Animation {
 						'preview_height'    => 300,
 						'id'                => 'primary-style',
 						'label'             => __( 'Primary Nav Style' ),
-						'description'       => __( 'Proper description goes here' ),
+						'description'       => __( 'This style will be applied to your primary nav' ),
 						'options'           => $this->get_primary_styles(),
 						'sanitize_callback' => 'sanitize_text_field',
 					),
@@ -158,7 +158,7 @@ class ET_Divi_100_Custom_Dropdown_Animation {
 						'preview_height'    => 300,
 						'id'                => 'secondary-style',
 						'label'             => __( 'Secondary Nav Style' ),
-						'description'       => __( 'Proper description goes here' ),
+						'description'       => __( 'This style will be applied to your secondary nav' ),
 						'options'           => $this->get_secondary_styles(),
 						'sanitize_callback' => 'sanitize_text_field',
 					),
